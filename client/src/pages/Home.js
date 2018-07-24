@@ -1,12 +1,12 @@
 import React from 'react';
+import './bootstrap.css';
+import img from './mainimg.jpg';
 
 const Home = () => {
     return (
-        <div>
-            <h2>
-                홈
-            </h2>
-        </div>
+      <div className='container'>
+        <img src={img} alt="" width="100%" />
+      </div>
     );
 };
 

@@ -41,17 +41,18 @@ class Login extends React.Component{
           body: JSON.stringify(userInfo)
         }).then((response)=> response.json())
         .then((responseData)=>{
-          //alert(responseData.result);
           var resdata = responseData.result;
           if(resdata === "Success"){
-            let loginData = {
-              isLoggedIn: true,
-              username: this.state.id};
-              document.cookie = 'key=' + btoa(JSON.stringify(loginData));
-              alert('Welcome, ' + this.state.id + '!', 2000);
-              sessionStorage.setItem('login_state', true);
-              sessionStorage.setItem('user_id', this.state.id);
-              this.setState({redirect:true});
+            alert('Welcome, ' + this.state.id + '!', 2000);
+
+            var userdata = responseData.data;
+            sessionStorage.setItem('login_state', true);
+            sessionStorage.setItem('user_id', this.state.id);
+            sessionStorage.setItem('name', userdata.name);
+            sessionStorage.setItem('number', userdata.number);
+            sessionStorage.setItem('address', userdata.address);
+
+            this.setState({redirect:true});
           }else{
             alert(responseData.result);
           }
@@ -60,7 +61,6 @@ class Login extends React.Component{
 
     render(){
       const {redirect} = this.state;
-
       if(redirect) return <Redirect push to="/"/>;
 
       return (

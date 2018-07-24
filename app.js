@@ -8,6 +8,10 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
 var joinRouter = require('./routes/join');
+var boardRouter = require('./routes/board');
+var postRouter = require('./routes/post');
+var post_inputRouter = require('./routes/post_input');
+var passfailRouter = require('./routes/passfail');
 
 var bodyParser  = require('body-parser');
 var mongoose    = require('mongoose');
@@ -21,14 +25,16 @@ db.once('open', function(){
 });
 
 
-var User = require('./models/user')
+var User = require('./models/user');
+var Post = require('./models/post');
+var Count = require('./models/count');
 
 mongoose.connect('mongodb://localhost/week4');
 
 var app = express();
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit : '50mb'}))
+app.use(bodyParser.urlencoded({ extended: true, limit : '50mb' }));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -44,6 +50,10 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login',loginRouter);
 app.use('/join', joinRouter);
+app.use('/board', boardRouter);
+app.use('/post', postRouter);
+app.use('/post_input', post_inputRouter);
+app.use('/passfail', passfailRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
