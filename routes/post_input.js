@@ -19,7 +19,6 @@ router.post('/', function(req, res, next) {
   var raw_author = req.body.author;
   var raw_picture = req.body.picture;
   var raw_picture_name = req.body.picture_name;
-	console.log(raw_picture);
 
   Count.findOne(function(err, count){
 		if(err) return res.status(500).send({result: 'database failure'});

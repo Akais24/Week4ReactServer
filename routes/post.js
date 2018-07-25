@@ -8,7 +8,7 @@ router.get('/:id', function(req, res, next) {
   Post.findOne({id:req.params.id}, function(err, post){
     if(err) return res.status(500).send({result: 'database failure'});
     if(!post ) return res.status(404).send({result: 'No post'});
-    if(post.picture_name !== ''){
+    if(post.picture_name !== '' && post.picture_name !== undefined && post.picture_name !== null){
       var savename = "images/" + post.id + "_" + post.picture_name;
       function base64_encode(file) {
           var bitmap = fs.readFileSync(file);
