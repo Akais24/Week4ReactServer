@@ -7,6 +7,7 @@ import './bootstrap.css';
 class Board extends React.Component{
   constructor(props) {
     super(props);
+    //this.translate = this.translate.bind(this);
     this.state = {
       redirect: false,
         category:props.match.params.category,
@@ -30,10 +31,7 @@ class Board extends React.Component{
   }
 
   componentWillReceiveProps(nextProps){
-    var nc = nextProps.match.params.category
-    console.log(this.state.category);
-    console.log(nc);
-    console.log(this.state.category !== nc);
+    var nc = nextProps.match.params.category;
     if(this.state.category !== nc || nc === 'all'){
       var url = '/board';
       if(nc !== 'all') url = url + "/" + nc;
@@ -66,6 +64,28 @@ class Board extends React.Component{
       const {redirect} = this.state;
       if(redirect) return <Redirect push to="/post_input"/>;
 
+      function translate(id){
+        switch (id) {
+          case "0":
+            return "[공지사항] "
+            break;
+          case "1":
+            return "[스크럼] "
+            break;
+          case "2":
+            return "[프로젝트] "
+            break;
+          case "3":
+            return "[세미나] "
+            break;
+          case "4":
+            return "[추억] "
+            break;
+          default:
+            return "[미정]"
+        }
+      }
+
       return (
         <div className="container">
         <br /><br /><h1>BOARD</h1><br />
@@ -80,7 +100,7 @@ class Board extends React.Component{
           <tbody>
             {this.state.posts.map(post =>
               <tr key={post.id}><td style={{textAlign: 'center'}}>{post.date}</td>
-                <td><NavLink to={"/post/" + post.id}>{post.title}</NavLink></td>
+                <td><NavLink to={"/post/" + post.id}>{translate(post.category)+post.title}</NavLink></td>
                 <td style={{textAlign: 'center'}}>{post.author}</td>
               </tr>
             )}

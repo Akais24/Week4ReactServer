@@ -13,6 +13,7 @@ class Post extends React.Component{
         user_id : sessionStorage.getItem('user_id'),
         post_id : props.match.params.id,
         post : '',
+        content : '',
         category: '',
         picture: '',
         redirect: false
@@ -46,6 +47,7 @@ class Post extends React.Component{
               break;
           }
           this.setState({post:data});
+          this.setState({content:data.content});
           if(data.picture_name !== ''){
             var pic = responseData.picture;
             this.setState({picture:pic});
@@ -78,6 +80,15 @@ class Post extends React.Component{
         change = <p align="center"><NavLink to={"/post/" + this.state.post_id + "/modify"}><button type="button" className="btn btn-primary">수정</button></NavLink>
           <button type="button" className="btn btn-danger" onClick= {() => { if (window.confirm('정말 삭제하시겠습니까')) this.deletepost() } }>삭제</button></p>
       }
+
+      var line_break = this.state.content.split("\n").map(function(item) {
+              return (
+                <span>
+                  {item}
+                  <br/>
+                </span>
+              )});
+
       return (
         <div className="container fullwidth">
           <h1>Post</h1>
@@ -91,10 +102,10 @@ class Post extends React.Component{
                 <td width={300}>{this.state.post.author}</td></tr>
               <tr><td width={50} style={{textAlign: 'center'}}>작성 날짜</td>
                 <td width={300}>{this.state.post.date}</td></tr>
-              <tr><td width={50} style={{textAlign: 'center'}}>사진</td>
-                <td width={300}><img src={this.state.picture} alt="" width="100%" /></td></tr>
+              {(this.state.picture !== '') && <tr><td width={50} style={{textAlign: 'center'}}>사진</td>
+                <td width={300}><img src={this.state.picture} alt="" width="100%" /></td></tr>}
               <tr><td width={50} style={{textAlign: 'center'}}>내용</td>
-                <td width={300}>{this.state.post.content}</td></tr>
+                <td width={300}>{line_break}</td></tr>
             </tbody>
           </table>
           {change}

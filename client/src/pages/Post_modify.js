@@ -134,13 +134,13 @@ class Post_modify extends React.Component{
                 <option value="4">추억</option>
               </select></td></tr>
               <tr><td width={50} style={{textAlign: 'center'}}>제목</td>
-                <td width={300}><input type="text" defaultValue={this.state.post.title} onChange={this.handleTitleChange.bind(this)} /></td></tr>
+                <td width={300}><input type="text" style={{width:"100%"}} defaultValue={this.state.post.title} onChange={this.handleTitleChange.bind(this)} /></td></tr>
               <tr><td width={50} style={{textAlign: 'center'}}>사진</td>
                   <td><img src={this.state.picture} alt="" width="100%" />
                   <input type="hidden" name="MAX_FILE_SIZE" value="134217728"/>
                     <input type="file" name="p_image" onChange={e => this.handleFileChosen(e.target.files[0])} /></td></tr>
               <tr><td width={50} style={{textAlign: 'center'}}>내용</td>
-                <td width={300}><input type="text" defaultValue={this.state.post.content} onChange={this.handleContentChange.bind(this)} rows={10}/></td></tr>
+                <td width={300}><textarea placeholder={this.state.post.content} style={{width:"100%"}} onChange={this.handleContentChange.bind(this)} rows={10}/></td></tr>
             </tbody>
             </table>
 

@@ -35,18 +35,18 @@ class Menu extends Component {
   render() {
     return (
       <div>
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
           <NavLink to="/" className="navbar-brand">MAD Camp</NavLink>
           <button onClick={() => this.handleClick()} className="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style={{}}>
             <span className="navbar-toggler-icon" />
           </button>
           <div id="butt" className= {this.state.show} style={{}}>
-            <ul className="navbar-nav mr-auto">
+            <ul className="navbar-nav mr-auto" style={{width:"100%"}}>
 
-              <li className="nav-item"><NavLink to="/intro" className="nav-link" onClick={this.closedropdow.bind(this)}>소개</NavLink></li>
-              <li className="nav-item"><NavLink to="/mypage" className="nav-link" onClick={this.closedropdow.bind(this)}>마이페이지</NavLink></li>
+              <li className="nav-item" style={{width:"wrap", margin:"0 10px 0 10px"}}><NavLink to="/intro" className="nav-link" onClick={this.closedropdow.bind(this)}>소개</NavLink></li>
+              <li className="nav-item" style={{width:"wrap", margin:"0 10px 0 10px"}}><NavLink to="/mypage" className="nav-link" onClick={this.closedropdow.bind(this)}>마이페이지</NavLink></li>
 
-              <li className={this.state.board1}>
+              <li className={this.state.board1} style={{width:"wrap", margin:"0 10px 0 10px"}}>
                 <a className="nav-link dropdown-toggle" onClick={() => this.handleClick2()} data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded={this.state.board2}>게시판</a>
                 <div className={this.state.board3} x-placement="bottom-start" style={{position: 'absolute', willChange: 'transform', top: 0, left: 0, transform: 'translate3d(0px, 37px, 0px)'}}>
                   <h6 className="dropdown-item"><NavLink to="/board/all" onClick={this.closedropdow.bind(this)}>전체 글 보기</NavLink></h6>
@@ -58,10 +58,10 @@ class Menu extends Component {
                 </div>
               </li>
 
-              <li className="nav-item"><NavLink to="/photos" className="nav-link" onClick={this.closedropdow.bind(this)}>사진첩</NavLink></li>
-              <li className="nav-item"><NavLink to="/" className="nav-link" onClick={this.closedropdow.bind(this)}>신청</NavLink></li>
-              {(!sessionStorage.getItem('login_state')) && <li className="nav-item"><NavLink to="/login" className="nav-link" onClick={this.closedropdow.bind(this)}>로그인</NavLink></li>}
-              {sessionStorage.getItem('login_state') && <li className="nav-item"><NavLink to="/logout" className="nav-link" onClick={this.closedropdow.bind(this)}>로그아웃</NavLink></li>}
+              <li className="nav-item" style={{width:"wrap", margin:"0 10px 0 10px"}}><NavLink to="/photos" className="nav-link" onClick={this.closedropdow.bind(this)}>사진첩</NavLink></li>
+              <li className="nav-item" style={{width:"wrap", margin:"0 10px 0 10px"}}><NavLink to="/" className="nav-link" onClick={this.closedropdow.bind(this)}>신청</NavLink></li>
+              {(!sessionStorage.getItem('login_state')) && <li className="nav-item" style={{width:"wrap", margin:"0 10px 0 10px"}}><NavLink to="/login" className="nav-link" onClick={this.closedropdow.bind(this)}>로그인</NavLink></li>}
+              {sessionStorage.getItem('login_state') && <li className="nav-item" style={{width:"wrap", margin:"0 10px 0 10px"}}><NavLink to="/logout" className="nav-link" onClick={this.closedropdow.bind(this)}>로그아웃</NavLink></li>}
             </ul>
           </div>
         </nav>

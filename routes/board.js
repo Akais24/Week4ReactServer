@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
     var array = [];
     for(var i=0; i<posts.length; i++){
       var target= posts[i];
-      array.push({id:target.id, title:target.title, author:target.author, date:target.date});
+      array.push({id:target.id, title:target.title, author:target.author, date:target.date, category:target.category});
     }
 
     res.json({result:"Success", data:array});
@@ -24,7 +24,7 @@ router.get('/:category', function(req, res, next) {
     var array = [];
     for(var i=0; i<posts.length; i++){
       var target= posts[i];
-      array.push({id:target.id, title:target.title, author:target.author, date:target.date});
+      array.push({id:target.id, title:target.title, author:target.author, date:target.date, category:target.category});
     }
 
     res.json({result:"Success", data:array});
