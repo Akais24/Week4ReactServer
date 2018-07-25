@@ -58,7 +58,7 @@ class Menu extends Component {
                 </div>
               </li>
 
-              <li className="nav-item"><NavLink to="/" className="nav-link" onClick={this.closedropdow.bind(this)}>사진첩</NavLink></li>
+              <li className="nav-item"><NavLink to="/photos" className="nav-link" onClick={this.closedropdow.bind(this)}>사진첩</NavLink></li>
               <li className="nav-item"><NavLink to="/" className="nav-link" onClick={this.closedropdow.bind(this)}>신청</NavLink></li>
               {(!sessionStorage.getItem('login_state')) && <li className="nav-item"><NavLink to="/login" className="nav-link" onClick={this.closedropdow.bind(this)}>로그인</NavLink></li>}
               {sessionStorage.getItem('login_state') && <li className="nav-item"><NavLink to="/logout" className="nav-link" onClick={this.closedropdow.bind(this)}>로그아웃</NavLink></li>}

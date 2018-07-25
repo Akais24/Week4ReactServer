@@ -12,3 +12,4 @@ export { default as Intro } from './Intro';
 export { default as Mypage } from './Mypage';
 export { default as Modifyinfo } from './Modifyinfo';
 export { default as Passfail } from './Passfail';
+export { default as Photos } from './Photos';

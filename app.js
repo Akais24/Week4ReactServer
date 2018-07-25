@@ -12,6 +12,8 @@ var boardRouter = require('./routes/board');
 var postRouter = require('./routes/post');
 var post_inputRouter = require('./routes/post_input');
 var passfailRouter = require('./routes/passfail');
+var photosRouter = require('./routes/photos');
+var imageRouter = require('./routes/images');
 
 var bodyParser  = require('body-parser');
 var mongoose    = require('mongoose');
@@ -54,6 +56,8 @@ app.use('/board', boardRouter);
 app.use('/post', postRouter);
 app.use('/post_input', post_inputRouter);
 app.use('/passfail', passfailRouter);
+app.use('/photos', photosRouter);
+app.use('/image', imageRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
