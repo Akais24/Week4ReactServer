@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
     var array = [];
     for(var i=0; i<posts.length; i++){
       var target= posts[i];
-      if(target.picture_name !== ''){
+      if(target.picture_name !== '' && target.picture_name !== undefined){
         // var savename = "images/" + target.id + "_" + target.picture_name;
         // var base64str = base64_encode(savename);
         // var total_data = target.header + base64str;

@@ -23,9 +23,8 @@ class Board extends React.Component{
         var resdata = responseData.result;
         if(resdata === "Success"){
           var data = responseData.data;
-          //alert(data[0].date);
+          data.reverse();
           this.setState({posts:data});
-          this.forceUpdate();
         }
       });
   }
@@ -44,6 +43,7 @@ class Board extends React.Component{
           var resdata = responseData.result;
           if(resdata === "Success"){
             var data = responseData.data;
+            data.reverse();
             //alert(data[0].date);
             this.setState({posts:data});
           }

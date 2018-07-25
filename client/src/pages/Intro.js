@@ -14,8 +14,8 @@ const Home = () => {
           <p>모집 기간 : 2018년 4월 21일 ~ 2018 년 5월 9일</p>
           <p>모집 인원 : 60 명</p>
           <p>참가 대상 : 국내 및 해외 대학생</p>
-          <p>신청 방법 : 구글 지원서 작성 : <a href="https://www.naver.com" target="_blank1">https://bit.ly/2EV5uVe </a></p>
-          <p>수업 내용 : <a href="https://www.google.com" target="_blank2">https://bit.ly/2HE08AH </a></p>
+          <p>신청 방법 : 구글 지원서 작성 : <a href="https://bit.ly/2EV5uVe" target="_blank1">https://bit.ly/2EV5uVe </a></p>
+          <p>수업 내용 : <a href="https://bit.ly/2HE08AH" target="_blank2">https://bit.ly/2HE08AH </a></p>
           <p>선발 방법 : 서류 심사</p>
           <p>수강생발표 : 2018년 5월 17 일, 개인별 이메일 공지</p>
           <p>캠프 기간 : 2018년 6월 29일(금) ~ 2018년 8월 2일(목) (5주 간)</p>

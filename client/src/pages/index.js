@@ -4,7 +4,6 @@ export { default as Login } from './Login';
 export { default as Logout} from './Logout';
 export { default as Join } from './Join';
 export { default as Board } from './Board';
-export { default as Board_Category } from './Board_Category';
 export { default as Post } from './Post';
 export { default as Post_input } from './Post_input';
 export { default as Post_modify } from './Post_modify';
