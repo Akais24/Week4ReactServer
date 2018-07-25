@@ -18,6 +18,8 @@ class Post_modify extends React.Component{
         user_id : sessionStorage.getItem('user_id'),
         post_id : props.match.params.id,
         post:'',
+        picture: '',
+        picture_name : '',
         img:''
       };
     }
@@ -31,6 +33,19 @@ class Post_modify extends React.Component{
     handleCategoryChange(e){
         this.setState({category:e.target.value})
     }
+    handleFileChosen = (file) => {
+      let reader = new FileReader();
+      reader.readAsDataURL(file);
+
+      const scope = this;
+      reader.onload = function () {
+          scope.setState({picture : reader.result})
+          scope.setState({picture_name : file.name})
+      };
+      reader.onerror = function (error) {
+          console.log('Error: ', error);
+      };
+    }
 
     componentDidMount() {
       fetch('/post/' + this.state.post_id)
@@ -41,6 +56,14 @@ class Post_modify extends React.Component{
             var data = responseData.data;
             //alert(data[0].date);
             this.setState({post:data});
+            this.setState({title : data.title});
+            this.setState({content : data.content});
+            this.setState({category : data.category});
+
+            if(data.picture_name !== ''){
+              var pic = responseData.picture;
+              this.setState({picture:pic});
+            }
           }
         });
     }
@@ -58,12 +81,14 @@ class Post_modify extends React.Component{
       }
       var today = new Date();
         let postInfo={
+          'id':this.state.post_id,
     			'title':this.state.title,
           'category':this.state.category,
           'content':this.state.content,
           'date':today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate(),
       		'author': this.state.user_id,
-          'picture':null
+          'picture':this.state.picture,
+          'picture_name': this.state.picture_name,
     		};
         fetch('/post/' + this.state.post_id,{
           method: 'POST',
@@ -92,7 +117,7 @@ class Post_modify extends React.Component{
       }
 
       const {redirect} = this.state;
-      if(redirect) return <Redirect push to={"/post/" + this.state.post_id}/>;
+      if(redirect) return <Redirect to={"/post/" + this.state.post_id}/>;
 
       return (
         <div className="container fullwidth">
@@ -111,9 +136,9 @@ class Post_modify extends React.Component{
               <tr><td width={50} style={{textAlign: 'center'}}>제목</td>
                 <td width={300}><input type="text" defaultValue={this.state.post.title} onChange={this.handleTitleChange.bind(this)} /></td></tr>
               <tr><td width={50} style={{textAlign: 'center'}}>사진</td>
-                  <td><img src={this.state.img} alt="" width="100%" />
+                  <td><img src={this.state.picture} alt="" width="100%" />
                   <input type="hidden" name="MAX_FILE_SIZE" value="134217728"/>
-                    <input type="file" name="p_image" /></td></tr>
+                    <input type="file" name="p_image" onChange={e => this.handleFileChosen(e.target.files[0])} /></td></tr>
               <tr><td width={50} style={{textAlign: 'center'}}>내용</td>
                 <td width={300}><input type="text" defaultValue={this.state.post.content} onChange={this.handleContentChange.bind(this)} rows={10}/></td></tr>
             </tbody>
