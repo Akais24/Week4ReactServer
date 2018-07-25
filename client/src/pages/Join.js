@@ -85,7 +85,7 @@ class Join extends Component {
 
   render() {
     const {redirect} = this.state;
-    if(redirect) return <Redirect push to="/"/>;
+    if(redirect) return <Redirect push to="/login"/>;
 
     return (
         <div className="container">
