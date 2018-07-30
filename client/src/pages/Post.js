@@ -74,7 +74,7 @@ class Post extends React.Component{
 
     render(){
       const {redirect} = this.state;
-      if(redirect) return <Redirect to="/board"/>;
+      if(redirect) return <Redirect to="/board/all"/>;
       var change = '';
       if(this.state.user_id === this.state.post.author){
         change = <p align="center"><NavLink to={"/post/" + this.state.post_id + "/modify"}><button type="button" className="btn btn-primary">수정</button></NavLink>
@@ -102,7 +102,7 @@ class Post extends React.Component{
                 <td width={300}>{this.state.post.author}</td></tr>
               <tr><td width={50} style={{textAlign: 'center'}}>작성 날짜</td>
                 <td width={300}>{this.state.post.date}</td></tr>
-              {(this.state.picture !== '') && <tr><td width={50} style={{textAlign: 'center'}}>사진</td>
+              {(this.state.picture !== '' && this.state.picture !== undefined) && <tr><td width={50} style={{textAlign: 'center'}}>사진</td>
                 <td width={300}><img src={this.state.picture} alt="" width="100%" /></td></tr>}
               <tr><td width={50} style={{textAlign: 'center'}}>내용</td>
                 <td width={300}>{line_break}</td></tr>

@@ -68,19 +68,14 @@ class Board extends React.Component{
         switch (id) {
           case "0":
             return "[공지사항] "
-            break;
           case "1":
             return "[스크럼] "
-            break;
           case "2":
             return "[프로젝트] "
-            break;
           case "3":
             return "[세미나] "
-            break;
           case "4":
             return "[추억] "
-            break;
           default:
             return "[미정]"
         }
